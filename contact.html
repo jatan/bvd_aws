@@ -83,6 +83,16 @@
 </header>
 
 <script type="text/javascript">
+    function ValidateEmail(input) {
+
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (!input.value.match(validRegex)) {
+        return false;
+        } 
+        return true;
+
+    }
     function validateForm() {
         var text = "Feel All the Mandatory Fields";
         var flag = true;
@@ -92,7 +102,7 @@
         }else{
             document.getElementById("contact_name").style.border = "0";
         }
-        if (document.forms["contact-form"]["email"].value == "") {
+        if (!ValidateEmail(document.forms["contact-form"]["email"])) {
             document.getElementById("contact_email").style.border = "2px solid Red";
             flag = false;
         }else{
@@ -142,7 +152,8 @@
     <div class="row">
         <div class="span8">
         <div class="span8 validation hidden" id="validate">Feel All the Mandatory Fields</div>
-            <form  target="_blank" name="contact-form" id="contact-form" class="contact-form" action="https://i6hhlft6ya.execute-api.us-east-1.amazonaws.com/default/submit" method = "get" onsubmit="validateForm();">
+            <form name="contact-form" id="contact-form" class="contact-form">
+
                 <p class="contact-name">
                     <input id="contact_name" class="validate" type="text" placeholder="Full Name" value="" name="name" />
                 </p>
@@ -158,9 +169,14 @@
                 <p class="contact-message">
                     <textarea id="contact_message" placeholder="Your Message" name="message" rows="12" cols="40"></textarea>
                 </p>
-                <p class="contact-submit">
-                    <a id="contact-submit" class="submit" onclick="validateForm()">Send your Email</a> 
+                
+                <p class="success_text" id = "success_text">
+                    Thank you for your email, I will get back to you shortly !
                 </p>
+                <p class="contact-submit">
+                    <a id="contact-submit" class="submit" >Send your Email</a> 
+                </p>
+                
             </form>
         </div>
         
@@ -229,6 +245,7 @@
         <div class ="row center">
             <form action="subscribe.php" method="post">
                 <div class="span12">
+                    
                     <p>
                         <input id="contact_name" type="text" placeholder="Full Name" value="" name="name" />
                     </p>

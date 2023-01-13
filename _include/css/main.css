@@ -1443,3 +1443,13 @@ footer .credits {
        -o-transition: none;
           transition: none;
 }
+.success_text {
+    display: none;
+}
+.success_text.show {
+    display: block;
+}
+.success_text {
+    text-align: center;
+    font-weight: bold;
+}

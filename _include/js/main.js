@@ -196,25 +196,28 @@ BVD.fancyBox = function(){
 
 BVD.contactForm = function(){
 	$("#contact-submit").on('click',function() {
+		if (!validateForm()){
+			return;
+		}
 		$contact_form = $('#contact-form');
-		
+		var successMessage = document.getElementById("success_text");
 		var fields = $contact_form.serialize();
 		
 		$.ajax({
 			type: "POST",
 			url: "https://i6hhlft6ya.execute-api.us-east-1.amazonaws.com/default/submit",
+			// url: "https://reqres.in/api/users",
 			data: fields,
 			dataType: 'json',
-			success: function(response) {
-				
-				if(response.status){
-					$('#contact-form input').val('');
-					$('#contact-form textarea').val('');
-				}
-				
-				$('#response').empty().html(response.html);
+		})
+		.done(function() {
+				$('#contact-form input').val('');
+				$('#contact-form textarea').val('');
+				successMessage.classList.add('show');
+				document.getElementById('validate').classList.add("hidden");
+				setTimeout(() => form.submit(), 20000);
 			}
-		});
+		);
 		
 		// $.ajax({
 		// 	type: 'POST',
