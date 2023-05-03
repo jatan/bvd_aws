@@ -83,7 +83,7 @@ BVD.slider = function(){
 		slides 					:  	[			// Slideshow Images
 											// {image : '_include/img/slider-images/image01.jpg', title : '', thumb : '', url : ''},
 											// {image : '_include/img/slider-images/13.jpg', title : '', thumb : '', url : ''},
-											{image : '_include/img/slider-images/image01.jpg', title : '', thumb : '', url : ''},
+											// {image : '_include/img/slider-images/image01.jpg', title : '', thumb : '', url : ''},
 											{image : '_include/img/slider-images/3.jpg', title : '', thumb : '', url : ''},
 											{image : '_include/img/slider-images/13.jpg', title : '', thumb : '', url : ''},
 									],
@@ -205,7 +205,9 @@ BVD.contactForm = function(){
 		
 		$.ajax({
 			type: "POST",
-			url: "https://i6hhlft6ya.execute-api.us-east-1.amazonaws.com/default/submit",
+			// url: "https://i6hhlft6ya.execute-api.us-east-1.amazonaws.com/default/submit",.
+			url: "https://emixn9fh92.execute-api.us-east-2.amazonaws.com/default",
+
 			// url: "https://reqres.in/api/users",
 			data: fields,
 			dataType: 'json',
@@ -218,7 +220,6 @@ BVD.contactForm = function(){
 				setTimeout(() => form.submit(), 20000);
 			}
 		);
-		
 		// $.ajax({
 		// 	type: 'POST',
 		// 	url: ' https://i6hhlft6ya.execute-api.us-east-1.amazonaws.com/default/submit',
@@ -399,7 +400,7 @@ BVD.toolTip = function(){
 BVD.fixNav = function(){
 	var destination = window.location.pathname.split('/').slice(-1)[0];
 	if(destination==''){
-		destination = 'index.php';
+		destination = 'index.html';
 	}
 	var nav = $("#menu a");
 	for (var i = nav.length - 1; i >= 0; i--) {
